@@ -1,0 +1,13 @@
+1.ConstrainLayout
+     相对定位
+     边距
+        GONE Margin
+        居中，左右上下
+        权重
+        圆形定位
+        尺寸约束
+        比例约束
+      链Chain
+2.动画
+
+3.Git

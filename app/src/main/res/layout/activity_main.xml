@@ -1,53 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <TextView
-        android:id="@+id/tv_01"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:background="@color/colorAccent"
-        android:gravity="center_vertical"
-        android:text="textview01"
-        app:layout_constraintHorizontal_bias="0.7"
+        android:id="@+id/anim_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="345"
+        android:textColor="@color/colorAccent"
+        android:textSize="100sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_02"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_marginLeft="28dp"
-        android:background="@color/colorPrimary"
-        android:text="textview02"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_01"
-        app:layout_constraintLeft_toRightOf="@+id/tv_01"
-        app:layout_constraintTop_toTopOf="@+id/tv_01" />
-
-    <TextView
-        android:id="@+id/tv_03"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:background="@color/colorAccent"
-        android:text="textview03"
-        app:layout_constraintLeft_toLeftOf="@+id/tv_02"
-        app:layout_constraintTop_toBottomOf="@+id/tv_02" />
-
-    <TextView
-        android:id="@+id/tv_04"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/begin_anim_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="textview04"
-        app:layout_constraintCircle="@id/tv_01"
-        app:layout_constraintCircleAngle="200"
-        android:background="@color/colorPrimaryDark"
-        app:layout_constraintCircleRadius="250dp"
+        android:text="Begin"
+        android:textAllCaps="false"
+        android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/anim_content" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
