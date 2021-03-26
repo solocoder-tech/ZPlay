@@ -1,2 +1,4 @@
+include ':aidlserver'
+include ':aidlclient'
 include ':notification'
 include ':app', ':zanimation'
