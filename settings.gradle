@@ -1,3 +1,4 @@
+include ':algorithm'
 include ':aidlserver'
 include ':aidlclient'
 include ':notification'

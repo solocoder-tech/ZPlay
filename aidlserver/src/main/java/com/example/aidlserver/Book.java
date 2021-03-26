@@ -12,36 +12,6 @@ public class Book implements Parcelable {
         this.author = author;
     }
 
-    protected Book(Parcel in) {
-        name = in.readString();
-        author = in.readString();
-    }
-
-    /**
-     * 负责反序列化
-     */
-    public static final Creator<Book> CREATOR = new Creator<Book>() {
-        /**
-         * 从序列化对象中，获取原始的对象
-         * @param in
-         * @return
-         */
-        @Override
-        public Book createFromParcel(Parcel in) {
-            return new Book(in);
-        }
-
-        /**
-         * 创建制定长度的原始对象数组
-         * @param size
-         * @return
-         */
-        @Override
-        public Book[] newArray(int size) {
-            return new Book[size];
-        }
-    };
-
     public String getName() {
         return name;
     }
@@ -66,6 +36,39 @@ public class Book implements Parcelable {
                 '}';
     }
 
+
+    /**
+     * 负责反序列化
+     * 注意：读的顺序必须和写writeToParcel()方法中的顺序一致，否则数据会有错误
+     */
+    protected Book(Parcel in) {
+        name = in.readString();
+        author = in.readString();
+    }
+
+    public static final Creator<Book> CREATOR = new Creator<Book>() {
+        /**
+         * 从序列化对象中，获取原始的对象
+         * @param in
+         * @return
+         */
+        @Override
+        public Book createFromParcel(Parcel in) {
+            return new Book(in);
+        }
+
+        /**
+         * 创建制定长度的原始对象数组
+         * @param size
+         * @return
+         */
+        @Override
+        public Book[] newArray(int size) {
+            return new Book[size];
+        }
+    };
+
+
     /**
      * 描述
      * 返回的是内容的描述信息
@@ -80,6 +83,7 @@ public class Book implements Parcelable {
 
     /**
      * 序列化
+     *
      * @param dest
      * @param flags
      */
