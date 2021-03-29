@@ -1,5 +1,12 @@
 package com.example.algorithm;
 
+import android.util.Log;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+
 public class AlgorithmUtils {
     /**
      * 1. 两数之和
@@ -36,61 +43,72 @@ public class AlgorithmUtils {
      * 2->4->3
      * 5->6->4
      * 7->0->8
-     *
+     * <p>
      * 每个链表中的节点数在范围 [1, 100] 内
      */
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        for (int i = 0;i<100;i++){
-
-        }
-
-
-
-
-
-
-
-
-
         ListNode listNode = new ListNode();
-        int sum = l1.val + l2.val;
-        listNode.val = sum % 10;
 
-        ListNode temp1 = l1;
-        ListNode temp2 = l2;
-        int sum1 = -1;
+        ListNode tempNode = listNode;
+        ListNode tempL1 = l1;
+        ListNode tempL2 = l2;
+        int tempNextVal = 0;
 
-        //第二个开始算起
-        for (; ; ) {
-            temp1 = temp1 == null ? null : temp1.next;
-            temp2 = temp2 == null ? null : temp2.next;
+        while (tempL1 != null || tempL2 != null) {
+            int sum = (tempL1 == null ? 0 : tempL1.val) + (tempL2 == null ? 0 : tempL2.val);
+            int tempVal = (sum + tempNextVal) % 10;
+            tempNextVal = (sum + tempNextVal) / 10;
 
-            if (temp1 == null && temp2 == null) {
-                //看有没有进位的情况
-                if (sum1 != -1) {
-                    ListNode listNode1 = new ListNode();
-                    listNode1.val = sum1 / 10;
-                    listNode.next = listNode1;
-                }
-                break;
+            tempNode.next = new ListNode(tempVal);
+
+            //移动指针
+            tempNode = tempNode.next;
+            if (tempL1 != null) {
+                tempL1 = tempL1.next;
             }
-
-            if (temp1 != null && temp2 == null) {
-                listNode.next = temp1;
-            } else if (temp1 == null && temp2 != null) {
-                listNode.next = temp2;
-            } else {
-                //创建节点
-                ListNode listNode1 = new ListNode();
-                sum1 = temp1.val + temp2.val;
-                listNode1.val = sum1 % 10;
-
-                listNode.next = listNode1;//?
+            if (tempL2 != null) {
+                tempL2 = tempL2.next;
             }
-
-            listNode.next = listNode.next.next;
         }
-        return listNode;
+        //最后进位的情况
+        if (tempNextVal != 0) {
+            tempNode.next = new ListNode(tempNextVal);
+        }
+
+        return listNode.next;
     }
 
+    /**
+     * 3.无重复字符的最长子串
+     * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+     * eg:
+     * 输入: s = "abcabcbb"
+     * 输出: 3
+     * 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+     */
+    public static int lengthOfLongestSubstring(String s) {
+        HashSet<Character> result = new HashSet<>();
+        int temp = 0;
+        for (int k = 0; k < s.length(); k++) {
+            for (int i = k; i < s.length(); i++) {
+                char c = s.charAt(i);
+                boolean add = result.add(c);
+                temp = Math.max(temp, result.size());
+                if (!add) {
+                    result.clear();
+                    break;
+                }
+            }
+        }
+        return temp;
+    }
+
+    /**
+     * 4. 寻找两个正序数组的中位数
+     * 给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。
+     * 请你找出并返回这两个正序数组的 中位数 。
+     */
+    public static double findMedianSortedArrays(int[] nums1,int[] nums2) {
+        return 0;
+    }
 }
