@@ -108,7 +108,38 @@ public class AlgorithmUtils {
      * 给定两个大小分别为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。
      * 请你找出并返回这两个正序数组的 中位数 。
      */
-    public static double findMedianSortedArrays(int[] nums1,int[] nums2) {
-        return 0;
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        //合并  排序  查找中间index
+        int[] arr = new int[nums1.length + nums2.length];
+        for (int i = 0; i < arr.length; i++) {
+            if (i < nums1.length) {
+                arr[i] = nums1[i];
+            } else {
+                arr[i] = nums2[i - nums1.length];
+            }
+        }
+        Arrays.sort(arr);
+        double result = 0;
+        if (arr.length % 2 == 0) {
+            result = (arr[arr.length / 2] + arr[arr.length / 2 - 1]) / 2.0;
+        } else {
+            result = arr[arr.length / 2];
+        }
+
+        return result;
+    }
+
+    /**
+     * 5. 最长回文子串
+     * 给你一个字符串 s，找到 s 中最长的回文子串。
+     * eg:
+     * 输入：s = "babad"
+     * 输出："bab"
+     * 解释："aba" 同样是符合题意的答案。
+     * "回文串”是一个正读和反读都一样的字符串
+     */
+    public String longestPalindrome(String s) {
+        String result = "";
+        return result;
     }
 }
