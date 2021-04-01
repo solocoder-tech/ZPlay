@@ -15,6 +15,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String s = "aacabdkacaa";
+        String s1 = AlgorithmUtils.longestPalindrome(s);
+        Log.e(TAG, s1);
+    }
+
+    private void test004() {
         int[] num1 = new int[]{2};
         int[] num2 = new int[]{};
         double medianSortedArrays = AlgorithmUtils.findMedianSortedArrays(num1, num2);

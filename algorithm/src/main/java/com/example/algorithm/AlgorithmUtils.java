@@ -7,6 +7,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import javax.security.auth.Subject;
+
 public class AlgorithmUtils {
     /**
      * 1. 两数之和
@@ -138,8 +140,62 @@ public class AlgorithmUtils {
      * 解释："aba" 同样是符合题意的答案。
      * "回文串”是一个正读和反读都一样的字符串
      */
-    public String longestPalindrome(String s) {
+    public static String longestPalindrome(String s) {
+        int max = 1;
         String result = "";
+        if (s.length() == 1) {
+            return s;
+        }
+        result = String.valueOf(s.charAt(0));
+        //找到所有的子串
+        for (int i = 0; i < s.length(); i++) {
+            if (max >= s.length() - i) {
+                break;
+            }
+            for (int j = i + 1; j <= s.length(); j++) {
+                String substring = s.substring(i, j);//[0,1)
+                Log.e("substring", substring);
+                boolean flag = true;
+                for (int i1 = 0; i1 < substring.length(); i1++) {
+                    char pre = substring.charAt(i1);
+                    char end = substring.charAt(substring.length() - 1 - i1);
+                    if (pre != end) {
+                        flag = false;
+                        Log.e("substring", flag + "");
+                        break;
+                    }
+                }
+                if (flag && substring.length() > max) {
+                    max = substring.length();
+                    result = substring;
+                }
+            }
+        }
+        //子串前后比较一样
         return result;
+    }
+
+    /**
+     * 6. Z 字形变换
+     * 将一个给定字符串 s 根据给定的行数 numRows ，以从上往下、从左到右进行 Z 字形排列。
+     * eg:
+     * 比如输入字符串为 "PAYPALISHIRING" 行数为 3 时，排列如下：
+     * P   A   H   N
+     * A P L S I I G
+     * Y   I   R
+     * 之后，你的输出需要从左往右逐行读取，产生出一个新的字符串，比如："PAHNAPLSIIGYIR"。
+     */
+
+    public static String convert(String s, int numRows) {
+        return "";
+    }
+
+    /**
+     * 7. 整数反转
+     * 给你一个 32 位的有符号整数 x ，返回将 x 中的数字部分反转后的结果。
+     * 如果反转后整数超过 32 位的有符号整数的范围 [−231,  231 − 1] ，就返回 0。
+     */
+    public static int reverse(int x) {
+        return 0;
     }
 }
